@@ -8,6 +8,6 @@ entries:
     digest: 4bb7f5951cf569509955fe37f87109b5fc88a8e68c54a3991d25e18f7f79b8c2
     name: mavapa
     urls:
-    - https://sergiotocalini.github.com/helm-charts/orgs/sergiotocalini/mavapa/charts/mavapa-1.0.0.tgz
+    - https://sergiotocalini.github.io/helm-charts/repos/mavapa/charts/mavapa-1.0.0.tgz
     version: 1.0.0
 generated: "2021-05-01T23:28:45.986633+02:00"
