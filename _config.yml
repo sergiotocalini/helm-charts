@@ -1,3 +1,6 @@
+title: "Helm Charts Repositories"
+url: "https://sergiotocalini.github.io/helm-charts"
+
 redirect:
   url: "https://artifacthub.io/packages/search?org=sergiotocalini&kind=0"
   name: "Helm Charts Repositories"
