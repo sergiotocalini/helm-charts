@@ -3,11 +3,11 @@ entries:
   mavapa:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2021-05-01T23:28:45.987398+02:00"
+    created: "2021-05-03T09:22:22.204268+02:00"
     description: A mavapa Helm chart for Kubernetes
-    digest: 4bb7f5951cf569509955fe37f87109b5fc88a8e68c54a3991d25e18f7f79b8c2
+    digest: 0f0db751710259012ba48377f257c95bf5bae28b57781b13d342fc81de8ed70b
     name: mavapa
     urls:
     - https://sergiotocalini.github.io/helm-charts/repos/mavapa/charts/mavapa-1.0.0.tgz
     version: 1.0.0
-generated: "2021-05-01T23:28:45.986633+02:00"
+generated: "2021-05-03T09:22:22.196012+02:00"
