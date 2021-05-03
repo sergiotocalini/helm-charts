@@ -1,13 +1,25 @@
 apiVersion: v1
 entries:
   mavapa:
-  - apiVersion: v1
+  - apiVersion: v2
     appVersion: 1.0.0
-    created: "2021-05-03T09:22:22.204268+02:00"
+    created: "2021-05-03T09:45:01.810096+02:00"
     description: A mavapa Helm chart for Kubernetes
-    digest: 0f0db751710259012ba48377f257c95bf5bae28b57781b13d342fc81de8ed70b
+    digest: f23a38ceea22a94cb13cd9484d0894c50b3a01189abba4fc3e384826c4ee8111
+    home: https://github.com/sergiotocalini/mavapa
+    keywords:
+    - idp
+    - iam
+    - identity
+    maintainers:
+    - email: sergiotocalini@gmail.com
+      name: Sergio Tocalini
+      url: https://sergiotocalini.github.io
     name: mavapa
+    sources:
+    - https://github.com/sergiotocalini/mavapa
+    type: application
     urls:
     - https://sergiotocalini.github.io/helm-charts/repos/mavapa/charts/mavapa-1.0.0.tgz
     version: 1.0.0
-generated: "2021-05-03T09:22:22.196012+02:00"
+generated: "2021-05-03T09:45:01.807898+02:00"
