@@ -1,3 +1,14 @@
 ---
-layout: redirect
----
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url={{ site.redirect.url }}">
+    <script type="text/javascript">
+      window.location.href = "{{ site.redirect.url }}"
+    </script>
+    <title>Page Redirection</title>
+  </head>
+  <body>
+    If you are not redirected automatically, follow this <a href="{{ site.redirect.url }}">{{ site.redirect.name }}</a>.
+  </body>
+</html>
