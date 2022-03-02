@@ -41,5 +41,5 @@ jobs:
           git add .
           git status
           git commit -m "Published by GitHub Actions"
-          git push origin ph-pages
+          git push origin gh-pages
 
