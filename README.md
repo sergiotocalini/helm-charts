@@ -1,7 +1,3 @@
----
-permalink: README.html
----
-
 # sergiotocalini's helm-charts repo
 Helm Charts Repository for my personal projects.
 
