@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v2
+        with:
+          path: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v2
+        with:
+          path: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.7.2
+
+      - name: Generate gh-pages branch
+        run: |
+          cp -rpv ./main/charts/*             ./gh-pages/
+          cp -rpv ./main/LICENSE              ./gh-pages/
+          cp -rpv ./main/README.md            ./gh-pages/
+          cp -rpv ./main/_config.yml          ./gh-pages/
+          cp -rpv ./main/artifacthub-repo.yml ./gh-pages/
+          cd ./gh-pages
+          helm repo index .
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git add .
+          git status
+          git commit -m "Published by GitHub Actions"
+          git push origin ph-pages
+
