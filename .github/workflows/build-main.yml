@@ -16,9 +16,10 @@ jobs:
           path: main
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Checkout gh-pages
+      - name: Checkout gh-pages branch
         uses: actions/checkout@v2
         with:
+          ref: gh-pages
           path: gh-pages
           token: ${{ secrets.GITHUB_TOKEN }}
           
