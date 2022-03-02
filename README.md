@@ -1,5 +1,5 @@
 ---
-permalink: /
+permalink: README.html
 ---
 
 # sergiotocalini's helm-charts repo
