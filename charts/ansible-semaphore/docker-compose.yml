@@ -1,0 +1,19 @@
+services:
+ semaphore:
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    image: semaphoreui/semaphore:v2.9.64
+    environment:
+      SEMAPHORE_DB_USER: ansible
+      SEMAPHORE_DB_PASS: "CQ9[w,THDn8bGD3.;jgFK7ao"
+      SEMAPHORE_ACCESS_KEY_ENCRYPTION: dZvm6oeBMgTaSY2MoCWr5oFFLg47KWQ+L7BzBnC76bA=
+      SEMAPHORE_DB_HOST: bolt # for postgres, change to: postgres
+      SEMAPHORE_DB_PORT: 5432 # change to 5432 for postgres
+      SEMAPHORE_DB_DIALECT: bolt # for postgres, change to: postgres
+      SEMAPHORE_DB: ansible
+      SEMAPHORE_PLAYBOOK_PATH: /tmp/semaphore/
+      SEMAPHORE_ADMIN_PASSWORD: changeme
+      SEMAPHORE_ADMIN_NAME: admin
+      SEMAPHORE_ADMIN_EMAIL: admin@localhost
+      SEMAPHORE_ADMIN: admin
