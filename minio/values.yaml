@@ -1,0 +1,83 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+fullnameOverride: "minio"
+replicaCount: 1
+image:
+  repository: quay.io/minio/minio
+  tag: RELEASE.2023-07-21T21-12-44Z
+  pullPolicy: IfNotPresent
+
+tenant: minio
+
+service:
+  console:
+    annotations: {}
+  api:
+    annotations: {}
+
+ingress:
+  console:
+    enabled: false
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+      # nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      # acme.cert-manager.io/http01-edit-in-place: "true"
+      # cert-manager.io/issuer: "default"
+    path: /
+    # hosts:
+    #   - chart-example.local
+    tls: []
+      # - secretName: chart-example-tls
+      #   hosts:
+      #     - chart-example.local
+  api:
+    enabled: false
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+      # nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      # nginx.ingress.kubernetes.io/ssl-passthrough: "false"
+      # nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+      # acme.cert-manager.io/http01-edit-in-place: "true"
+      # cert-manager.io/issuer: "default"
+    path: /
+    # hosts:
+    #   - chart-example.local
+    tls: []
+      # - secretName: chart-example-tls
+      #   hosts:
+      #     - chart-example.local
+
+certificate:
+  console:
+    enabled: false
+    issuerRef:
+      name: default
+      kind: Issuer
+    dnsNames: []
+  api:
+    enabled: false
+    issuerRef:
+      name: default
+      kind: Issuer
+    dnsNames: []
+
+issuer:
+  enabled: false
+    
+configmap: {}
+secret: {}
+pvc:
+  accessModes: "ReadWriteOnce"
+
+resources:
+  limits:
+    memory: 1024Mi
+  requests:
+    memory: 512Mi
+
+securityContext:
+  allowPrivilegeEscalation: false
+    
+nodeSelector: {}
+tolerations: []
+affinity: {}

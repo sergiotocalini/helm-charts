@@ -1,0 +1,35 @@
+{{- if .Values.certificate.console.enabled -}}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: console
+spec:
+  secretName: console-tls
+  {{- with .Values.certificate.console.issuerRef }}
+  issuerRef: {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- if .Values.certificate.console.dnsNames }}
+  dnsNames:
+  {{- range .Values.certificate.console.dnsNames }}
+  - {{ toYaml . }}
+  {{- end }}  
+  {{- end }}  
+{{- end }}
+---
+{{- if .Values.certificate.api.enabled }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: api
+spec:
+  secretName: api-tls
+  {{- with .Values.certificate.api.issuerRef }}
+  issuerRef: {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- if .Values.certificate.api.dnsNames }}
+  dnsNames:
+  {{- range .Values.certificate.api.dnsNames }}
+  - {{ toYaml . }}
+  {{- end }}  
+  {{- end }}
+{{- end }}

@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: dashy
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local
+  resources:
+    requests:
+      storage: 2Gi

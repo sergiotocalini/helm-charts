@@ -3,7 +3,7 @@ entries:
   mavapa:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-03-02T15:25:46.605251671Z"
+    created: "2024-08-02T19:44:28.416397977Z"
     description: A mavapa Helm chart for Kubernetes
     digest: f0196179d0cb956b5c4a4ea142561187dbdc39d0659c1fa8cbe3e754ece8fba9
     home: https://github.com/sergiotocalini/mavapa
@@ -25,7 +25,7 @@ entries:
   safbi:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-03-02T15:25:46.605891895Z"
+    created: "2024-08-02T19:44:28.41689813Z"
     description: A safbi Helm chart for Kubernetes
     digest: 58f9e8225cc60153a57bec8a450769885c91e18713c8b09ca32531eeeefcbfed
     home: https://github.com/sergiotocalini/safbi
@@ -42,4 +42,4 @@ entries:
     urls:
     - safbi/safbi-1.0.0.tgz
     version: 1.0.0
-generated: "2022-03-02T15:25:46.60440664Z"
+generated: "2024-08-02T19:44:28.41571363Z"
