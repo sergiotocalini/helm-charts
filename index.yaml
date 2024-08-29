@@ -3,9 +3,9 @@ entries:
   ansible-semaphore:
   - apiVersion: v2
     appVersion: v2.10.22
-    created: "2024-08-29T13:53:49.846356773Z"
+    created: "2024-08-29T14:23:13.337095584Z"
     description: A Helm chart for ansible-semaphore
-    digest: f26f6a18ac81166d26f521e93a772a10dafbf1a9157654055fe36fa721716bd5
+    digest: aba39fc01f74f484d1a355cd2c4d937593387ec88872994c689408268fd0683e
     name: ansible-semaphore
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   corteza:
   - apiVersion: v2
     appVersion: 2023.9.7
-    created: "2024-08-29T13:53:49.846837022Z"
+    created: "2024-08-29T14:23:13.337571735Z"
     description: cortezaproject.org
-    digest: f8b612ce72e755e7a49855138cececddf4d04e4bb04b5b8d9359edcb7ba6dcef
+    digest: e49dd4d6bb191803ad4bab2692a401e9ef281fee78c53162091f564caadd1138
     home: https://github.com/cortezaproject/corteza
     keywords:
     - crm
@@ -34,10 +34,10 @@ entries:
   dashy:
   - apiVersion: v2
     appVersion: 2.1.1
-    created: "2024-08-29T13:53:49.847105946Z"
+    created: "2024-08-29T14:23:13.337820471Z"
     description: 'A self-hostable personal dashboard built for you. Includes status-checking,
       widgets, themes, icon packs, a UI editor and tons more! '
-    digest: 47be25daa527ff7fcbd055bc72b3ca586b0b7f4926cba0fb3a191a9b6bc26c49
+    digest: fde5bd2743d1914c8a3f1691964fda5c66932fe89b006fd4eb3583efe7788aca
     home: https://dashy.to
     keywords:
     - homelab
@@ -56,9 +56,9 @@ entries:
   guacamole:
   - apiVersion: v2
     appVersion: 1.5.5
-    created: "2024-08-29T13:53:49.84775414Z"
+    created: "2024-08-29T14:23:13.338415524Z"
     description: guacamole.apache.org
-    digest: d13f025b748fcce153e0d88a7ef2ceb4b0721a715951bf8e1c2bcdf8979c9334
+    digest: e5257e628dec4827eb9dda5c2a49e6066b52c7e5f9da859b5902dab405d62c3b
     home: https://guacamole.apache.org
     keywords:
     - rdp
@@ -78,7 +78,7 @@ entries:
   mavapa:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-08-29T13:44:43.159796899Z"
+    created: "2024-08-29T14:23:13.338874944Z"
     description: A mavapa Helm chart for Kubernetes
     digest: f0196179d0cb956b5c4a4ea142561187dbdc39d0659c1fa8cbe3e754ece8fba9
     home: https://github.com/sergiotocalini/mavapa
@@ -95,14 +95,14 @@ entries:
     - https://github.com/sergiotocalini/mavapa
     type: application
     urls:
-    - mavapa-1.0.0.tgz
+    - mavapa/mavapa-1.0.0.tgz
     version: 1.0.0
   minio:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-08-29T13:53:49.848205926Z"
+    created: "2024-08-29T14:23:13.339274411Z"
     description: Helm chart for MinIO
-    digest: 4d0fd59a6007492be4ae96c4fe65aa3170103fd01d31c9fd074cecacbb580f8c
+    digest: b62e9c658a4eccf5509a20ca63526eaf5f9f1ff3a597c48b4aad0f0115b36fc9
     home: https://github.com/sergiotocalini/helm-charts/charts/minio
     maintainers:
     - email: sergiotocalini@gmail.com
@@ -116,9 +116,9 @@ entries:
   opnform:
   - apiVersion: v2
     appVersion: 1.3.2
-    created: "2024-08-29T13:53:49.84902475Z"
+    created: "2024-08-29T14:23:13.339939376Z"
     description: Beautiful Open-Source Form Builder
-    digest: fc9b021aefd8c19c62a08311f40f29b158db05e88c47ac70add5946e08a2ecf7
+    digest: 61a6a0bb0dd2664e313f1a0ba39d2d0c1d3cce4a58ee8d103c0f219e6c7a9035
     home: https://opnform.com/
     keywords:
     - rdp
@@ -138,7 +138,7 @@ entries:
   safbi:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-08-29T13:44:43.161693636Z"
+    created: "2024-08-29T14:23:13.340359682Z"
     description: A safbi Helm chart for Kubernetes
     digest: 58f9e8225cc60153a57bec8a450769885c91e18713c8b09ca32531eeeefcbfed
     home: https://github.com/sergiotocalini/safbi
@@ -153,17 +153,17 @@ entries:
     - https://github.com/sergiotocalini/safbi
     type: application
     urls:
-    - safbi-1.0.0.tgz
+    - safbi/safbi-1.0.0.tgz
     version: 1.0.0
   squid:
   - apiVersion: v2
     appVersion: 6.1-23.10_edge
-    created: "2024-08-29T13:53:49.84960672Z"
+    created: "2024-08-29T14:23:13.340786891Z"
     description: A Helm chart for squid
-    digest: a8391a549c691d59497230978a366ee9d9f4313fdf52b79d589fe183db524c70
+    digest: 9e102999993a84098af5cb16d838b6068c797f0d024cd64a7e0efd85df3a196a
     name: squid
     type: application
     urls:
     - squid/squid-1.0.0.tgz
     version: 1.0.0
-generated: "2024-08-29T13:53:49.845707456Z"
+generated: "2024-08-29T14:23:13.336476606Z"
