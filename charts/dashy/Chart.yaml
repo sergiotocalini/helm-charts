@@ -1,0 +1,18 @@
+apiVersion: v2
+name: dashy
+version: "1.0.0"
+appVersion: "2.1.1"
+home: https://dashy.to
+description: |
+  A self-hostable personal dashboard built for you.
+  Includes status-checking, widgets, themes, icon packs, a UI editor and tons more!
+keywords:
+  - homelab
+  - dashboard
+sources:
+  - https://github.com/Lissy93/dashy
+type: application
+maintainers:
+  - name: "Sergio Tocalini"
+    email: sergiotocalini@gmail.com
+    url: https://sergiotocalini.github.io
