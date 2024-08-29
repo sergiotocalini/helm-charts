@@ -30,13 +30,15 @@ jobs:
 
       - name: Generate gh-pages branch
         run: |
-          CURRENT_DIR=$(pwd)
-          while IFS= read -r dir ; do 
+          WORK_DIR=$(pwd)
+          while IFS= read -r dir ; do
+             package=$(basename "${dir}")
              cd "${dir}"
              helm package .
-             cd ${CURRENT_DIR}
+             cd ${WORK_DIR}
+             mkdir -p ./gh-pages/${package}
+             cp -rpv ./main/charts/${package}/*.tgz ./gh-pages/${package}
           done < <(find ./main/charts -mindepth 1 -maxdepth 1 -type d -exec test -e '{}/Chart.yml' ';' -or -exec test -e '{}/Chart.yaml' ';' -print -prune)
-          cp -rpv ./main/charts/**/*.tgz      ./gh-pages/
           cp -rpv ./main/LICENSE              ./gh-pages/
           cp -rpv ./main/README.md            ./gh-pages/
           cp -rpv ./main/_config.yml          ./gh-pages/
