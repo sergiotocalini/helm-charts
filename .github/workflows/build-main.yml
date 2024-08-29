@@ -34,8 +34,8 @@ jobs:
           while IFS= read -r dir ; do 
              cd "${dir}"
              helm package .
+             cd ${CURRENT_DIR}
           done < <(find ./main/charts -mindepth 1 -maxdepth 1 -type d -exec test -e '{}/Chart.yml' ';' -or -exec test -e '{}/Chart.yaml' ';' -print -prune)
-          cd ${CURRENT_DIR}
           cp -rpv ./main/charts/**/*.tgz      ./gh-pages/
           cp -rpv ./main/LICENSE              ./gh-pages/
           cp -rpv ./main/README.md            ./gh-pages/
