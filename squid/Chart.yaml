@@ -1,6 +1,0 @@
-apiVersion: v2
-appVersion: 6.1-23.10_edge
-description: A Helm chart for squid
-name: squid
-type: application
-version: 1.0.0
