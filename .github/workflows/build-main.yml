@@ -30,14 +30,20 @@ jobs:
 
       - name: Generate gh-pages branch
         run: |
-          cp -rpv ./main/charts/*             ./gh-pages/
+          CURRENT_DIR=$(pwd)
+          while IFS= read -r dir ; do 
+             cd "${dir}"
+             helm package .
+          done < <(find ./main/charts -mindepth 1 -maxdepth 1 -type d -exec test -e '{}/Chart.yml' ';' -or -exec test -e '{}/Chart.yaml' ';' -print -prune)
+          cd ${CURRENT_DIR}
+          cp -rpv ./main/charts/**/*.tgz      ./gh-pages/
           cp -rpv ./main/LICENSE              ./gh-pages/
           cp -rpv ./main/README.md            ./gh-pages/
           cp -rpv ./main/_config.yml          ./gh-pages/
           cp -rpv ./main/artifacthub-repo.yml ./gh-pages/
           cp -rpv ./main/index.html           ./gh-pages/
           cd ./gh-pages
-          helm repo index .
+          helm repo index . --merge index.yaml
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git pull

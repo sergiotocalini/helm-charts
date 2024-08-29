@@ -1,0 +1,17 @@
+apiVersion: v2
+name: opnform
+version: "1.0.0"
+appVersion: "1.3.2"
+home: https://opnform.com/
+description: "Beautiful Open-Source Form Builder"
+keywords:
+  - rdp
+  - ssh
+  - vnc
+sources:
+  - https://github.com/JhumanJ/OpnForm
+type: application
+maintainers:
+  - name: "Sergio Tocalini"
+    email: sergiotocalini@gmail.com
+    url: https://sergiotocalini.github.io

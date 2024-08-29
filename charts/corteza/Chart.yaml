@@ -1,0 +1,15 @@
+apiVersion: v2
+name: corteza
+version: "1.0.0"
+appVersion: "2023.9.7"
+home: https://github.com/cortezaproject/corteza
+description: "cortezaproject.org"
+keywords:
+  - crm
+sources:
+  - https://github.com/cortezaproject/corteza
+type: application
+maintainers:
+  - name: "Sergio Tocalini"
+    email: sergiotocalini@gmail.com
+    url: https://sergiotocalini.github.io

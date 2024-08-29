@@ -1,0 +1,52 @@
+{{- if and (.Values.guacd.service) (.Values.guacd.service.ports) }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "helmproj.fullname" . }}-guacd
+  labels:
+    app: {{ template "helmproj.name" . }}-guacd
+    chart: {{ template "helmproj.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.guacd.service.type }}
+  {{- with .Values.guacd.service.ports }}
+  ports:
+    {{- range $index, $item :=  . }}
+    - port: {{ $item.port }}
+      targetPort: {{ $item.targetPort }}
+      protocol: {{ $item.protocol | default "TCP" }}
+      name: {{ $item.name }}
+    {{- end }}
+  {{- end }}
+  selector:
+    app: {{ template "helmproj.name" . }}-guacd
+    release: {{ .Release.Name }}
+{{- end }}
+{{- if and (.Values.app.service) (.Values.app.service.ports) }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "helmproj.fullname" . }}-app
+  labels:
+    app: {{ template "helmproj.name" . }}-app
+    chart: {{ template "helmproj.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.app.service.type }}
+  {{- with .Values.app.service.ports }}
+  ports:
+    {{- range $index, $item :=  . }}
+    - port: {{ $item.port }}
+      targetPort: {{ $item.targetPort }}
+      protocol: {{ $item.protocol | default "TCP" }}
+      name: {{ $item.name }}
+    {{- end }}
+  {{- end }}
+  selector:
+    app: {{ template "helmproj.name" . }}-app
+    release: {{ .Release.Name }}
+{{- end }}

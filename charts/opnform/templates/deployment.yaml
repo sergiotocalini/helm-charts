@@ -1,0 +1,307 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "helmproj.fullname" . }}-worker
+  labels:
+    app: {{ template "helmproj.name" . }}-worker
+    chart: {{ template "helmproj.chart" . }}
+    draft: {{ .Values.draft | default "draft-app" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.worker.replicas }}
+  selector:
+    matchLabels:
+      app: {{ template "helmproj.name" . }}-worker
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "helmproj.name" . }}-worker
+        draft: {{ .Values.draft | default "draft-worker" }}
+        release: {{ .Release.Name }}
+      annotations:
+        buildID: {{ .Values.buildID | default "" | quote }}
+    spec:
+      containers:
+        - name: worker
+          image: "{{ .Values.worker.image.repository }}:{{ default .Chart.AppVersion .Values.worker.image.tag }}"
+          imagePullPolicy: {{ default "IfNotPresent" .Values.worker.image.pullPolicy }}
+          {{- with .Values.worker.ports }}
+          ports:
+            {{- range $index, $item := . }}
+            - name: {{ $item.name }}
+              containerPort: {{ $item.containerPort }}
+              protocol: {{ $item.protocol | default "TCP" }}
+            {{- end }}
+          {{- end }}
+          {{- with .Values.worker.livenessProbe }}
+          livenessProbe: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.worker.readinessProbe }}
+          readinessProbe: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ template "helmproj.fullname" . }}-worker-configs
+            {{- if .Values.secrets }}
+            - secretRef:
+                name: {{ template "helmproj.fullname" . }}-worker-secrets
+            {{- end }}
+            {{- range $index, $item := .Values.worker.existingSecrets }}
+            - secretRef:
+                name: {{ $item }}
+            {{- end }}
+          {{- with .Values.worker.env }}
+          env:
+            {{- range $k, $v := . }}
+            - name: {{ $k | quote}}
+              value: {{ $v | quote }}
+            {{- end }}
+          {{- end }}
+          {{- with .Values.worker.resources }}
+          resources: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.worker.startupProbe }}
+          startupProbe: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.worker.securityContext }}
+          securityContext: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.worker.terminationGracePeriodSeconds }}
+          terminationGracePeriodSeconds: {{- . | default "30" }}
+          {{- end }}
+      {{- with .Values.worker.imagePullSecrets }}
+      imagePullSecrets:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.worker.nodeSelector }}
+      nodeSelector:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.worker.affinity }}
+      affinity:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.worker.tolerations }}
+      tolerations:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "helmproj.fullname" . }}-client
+  labels:
+    app: {{ template "helmproj.name" . }}-client
+    chart: {{ template "helmproj.chart" . }}
+    draft: {{ .Values.draft | default "draft-app" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.client.replicas }}
+  selector:
+    matchLabels:
+      app: {{ template "helmproj.name" . }}-client
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "helmproj.name" . }}-client
+        draft: {{ .Values.draft | default "draft-client" }}
+        release: {{ .Release.Name }}
+      annotations:
+        bclientldID: {{ .Values.bclientldID | default "" | quote }}
+    spec:
+      containers:
+        - name: client
+          image: "{{ .Values.client.image.repository }}:{{ default .Chart.AppVersion .Values.client.image.tag }}"
+          imagePullPolicy: {{ default "IfNotPresent" .Values.client.image.pullPolicy }}
+          {{- with .Values.client.ports }}
+          ports:
+            {{- range $index, $item := . }}
+            - name: {{ $item.name }}
+              containerPort: {{ $item.containerPort }}
+              protocol: {{ $item.protocol | default "TCP" }}
+            {{- end }}
+          {{- end }}
+          {{- with .Values.client.livenessProbe }}
+          livenessProbe: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.client.readinessProbe }}
+          readinessProbe: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ template "helmproj.fullname" . }}-client-configs
+            {{- if .Values.secrets }}
+            - secretRef:
+                name: {{ template "helmproj.fullname" . }}-client-secrets
+            {{- end }}
+            {{- range $index, $item := .Values.client.existingSecrets }}
+            - secretRef:
+                name: {{ $item }}
+            {{- end }}
+          {{- with .Values.client.env }}
+          env:
+            {{- range $k, $v := . }}
+            - name: {{ $k | quote}}
+              value: {{ $v | quote }}
+            {{- end }}
+          {{- end }}
+          {{- with .Values.client.resources }}
+          resources: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.client.startupProbe }}
+          startupProbe: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.client.securityContext }}
+          securityContext: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.client.terminationGracePeriodSeconds }}
+          terminationGracePeriodSeconds: {{- . | default "30" }}
+          {{- end }}
+      {{- with .Values.client.imagePullSecrets }}
+      imagePullSecrets:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.client.nodeSelector }}
+      nodeSelector:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.client.affinity }}
+      affinity:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.client.tolerations }}
+      tolerations:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "helmproj.fullname" . }}-nginx
+  labels:
+    app: {{ template "helmproj.name" . }}-nginx
+    chart: {{ template "helmproj.chart" . }}
+    draft: {{ .Values.draft | default "draft-app" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.nginx.replicas }}
+  selector:
+    matchLabels:
+      app: {{ template "helmproj.name" . }}-nginx
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "helmproj.name" . }}-nginx
+        draft: {{ .Values.draft | default "draft-nginx" }}
+        release: {{ .Release.Name }}
+      annotations:
+        buildID: {{ .Values.buildID | default "" | quote }}
+    spec:
+      containers:
+        - name: nginx
+          image: "{{ .Values.nginx.image.repository }}:{{ default .Chart.AppVersion .Values.nginx.image.tag }}"
+          imagePullPolicy: {{ default "IfNotPresent" .Values.nginx.image.pullPolicy }}
+          {{- with .Values.nginx.ports }}
+          ports:
+            {{- range $index, $item := . }}
+            - name: {{ $item.name }}
+              containerPort: {{ $item.containerPort }}
+              protocol: {{ $item.protocol | default "TCP" }}
+            {{- end }}
+          {{- end }}
+          {{- with .Values.nginx.livenessProbe }}
+          livenessProbe: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.nginx.readinessProbe }}
+          readinessProbe: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- if or .Values.nginx.volumes.configmaps .Values.nginx.volumes.secrets }}
+          volumeMounts:
+            {{- range $key, $val := .Values.nginx.volumes.configmaps }}
+            - name: configs
+              mountPath: {{ $.Values.nginx.volumeMounts.configmaps }}/{{ $key }}
+              subPath: {{ $key }}
+            {{- end }}
+            {{- range $key, $val := .Values.nginx.volumes.secrets }}
+            - name: secrets
+              mountPath: {{ $.Values.nginx.volumeMounts.secrets }}/{{ $key }}
+              subPath: {{ $key }}
+              readOnly: true
+            {{- end }}
+          {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ template "helmproj.fullname" . }}-nginx-configs
+            {{- if .Values.secrets }}
+            - secretRef:
+                name: {{ template "helmproj.fullname" . }}-nginx-secrets
+            {{- end }}
+            {{- range $index, $item := .Values.nginx.existingSecrets }}
+            - secretRef:
+                name: {{ $item }}
+            {{- end }}
+          {{- with .Values.nginx.env }}
+          env:
+            {{- range $k, $v := . }}
+            - name: {{ $k | quote}}
+              value: {{ $v | quote }}
+            {{- end }}
+          {{- end }}
+          {{- with .Values.nginx.resources }}
+          resources: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.nginx.startupProbe }}
+          startupProbe: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.nginx.securityContext }}
+          securityContext: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.nginx.terminationGracePeriodSeconds }}
+          terminationGracePeriodSeconds: {{- . | default "30" }}
+          {{- end }}
+      {{- if or .Values.nginx.volumes.configmaps .Values.nginx.volumes.secrets }}
+      volumes:
+        {{- if .Values.nginx.volumes.configmaps }}
+        - name: configs
+          configMap:
+            name: {{ template "helmproj.fullname" . }}-nginx-configs-vol
+        {{- end }}
+        {{- if .Values.nginx.volumes.secrets }}
+        - name: secrets
+          secret:
+            secretName: {{ template "helmproj.fullname" . }}-nginx-secrets-vol
+        {{- end }}
+      {{- end }}        
+      {{- with .Values.nginx.imagePullSecrets }}
+      imagePullSecrets:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.nginx.nodeSelector }}
+      nodeSelector:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.nginx.affinity }}
+      affinity:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.nginx.tolerations }}
+      tolerations:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+---

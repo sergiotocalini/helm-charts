@@ -1,0 +1,187 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "helmproj.fullname" . }}-guacd
+  labels:
+    app: {{ template "helmproj.name" . }}-guacd
+    chart: {{ template "helmproj.chart" . }}
+    draft: {{ .Values.draft | default "draft-app" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.guacd.replicas }}
+  selector:
+    matchLabels:
+      app: {{ template "helmproj.name" . }}-guacd
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "helmproj.name" . }}-guacd
+        draft: {{ .Values.draft | default "draft-app" }}
+        release: {{ .Release.Name }}
+      annotations:
+        buildID: {{ .Values.buildID | default "" | quote }}
+    spec:
+      containers:
+        - name: guacd
+          image: "{{ .Values.guacd.image.repository }}:{{ default .Chart.AppVersion .Values.guacd.image.tag }}"
+          imagePullPolicy: {{ default "IfNotPresent" .Values.guacd.image.pullPolicy }}
+          {{- with .Values.guacd.ports }}
+          ports:
+            {{- range $index, $item := . }}
+            - name: {{ $item.name }}
+              containerPort: {{ $item.containerPort }}
+              protocol: {{ $item.protocol | default "TCP" }}
+              {{- end }}
+          {{- end }}
+          {{- with .Values.guacd.livenessProbe }}
+          livenessProbe: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.guacd.readinessProbe }}
+          readinessProbe: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ template "helmproj.fullname" . }}-guacd-configs
+            {{- if .Values.guacd.secrets }}
+            - secretRef:
+                name: {{ template "helmproj.fullname" . }}-guacd-secrets
+            {{- end }}
+            {{- range $index, $item := .Values.guacd.existingSecrets }}
+            - secretRef:
+                name: {{ $item }}
+            {{- end }}
+          {{- with .Values.guacd.env }}
+          env:
+            {{- range $k, $v := . }}
+            - name: {{ $k | quote}}
+              value: {{ $v | quote }}
+            {{- end }}
+          {{- end }}
+          {{- with .Values.guacd.resources }}
+          resources: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.guacd.startupProbe }}
+          startupProbe: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.guacd.securityContext }}
+          securityContext: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.guacd.terminationGracePeriodSeconds }}
+          terminationGracePeriodSeconds: {{- . | default "30" }}
+          {{- end }}
+                    
+      {{- with .Values.guacd.imagePullSecrets }}
+      imagePullSecrets:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.guacd.nodeSelector }}
+      nodeSelector:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.guacd.affinity }}
+      affinity:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.guacd.tolerations }}
+      tolerations:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "helmproj.fullname" . }}-app
+  labels:
+    app: {{ template "helmproj.name" . }}-app
+    chart: {{ template "helmproj.chart" . }}
+    draft: {{ .Values.draft | default "draft-app" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.app.replicas }}
+  selector:
+    matchLabels:
+      app: {{ template "helmproj.name" . }}-app
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "helmproj.name" . }}-app
+        draft: {{ .Values.draft | default "draft-app" }}
+        release: {{ .Release.Name }}
+      annotations:
+        buildID: {{ .Values.buildID | default "" | quote }}
+    spec:
+      containers:
+        - name: guacamole
+          image: "{{ .Values.app.image.repository }}:{{ default .Chart.AppVersion .Values.app.image.tag }}"
+          imagePullPolicy: {{ default "IfNotPresent" .Values.app.image.pullPolicy }}
+          {{- with .Values.app.ports }}
+          ports:
+            {{- range $index, $item := . }}
+            - name: {{ $item.name }}
+              containerPort: {{ $item.containerPort }}
+              protocol: {{ $item.protocol | default "TCP" }}
+            {{- end }}
+          {{- end }}
+          {{- with .Values.app.livenessProbe }}
+          livenessProbe: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.app.readinessProbe }}
+          readinessProbe: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ template "helmproj.fullname" . }}-app-configs
+            {{- if .Values.secrets }}
+            - secretRef:
+                name: {{ template "helmproj.fullname" . }}-app-secrets
+            {{- end }}
+            {{- range $index, $item := .Values.app.existingSecrets }}
+            - secretRef:
+                name: {{ $item }}
+            {{- end }}
+          {{- with .Values.app.env }}
+          env:
+            {{- range $k, $v := . }}
+            - name: {{ $k | quote}}
+              value: {{ $v | quote }}
+            {{- end }}
+          {{- end }}
+          {{- with .Values.app.resources }}
+          resources: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.app.startupProbe }}
+          startupProbe: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.app.securityContext }}
+          securityContext: {{- . | toYaml | nindent 12 }}
+          {{- end }}
+          {{- with .Values.app.terminationGracePeriodSeconds }}
+          terminationGracePeriodSeconds: {{- . | default "30" }}
+          {{- end }}
+      {{- with .Values.app.imagePullSecrets }}
+      imagePullSecrets:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.app.nodeSelector }}
+      nodeSelector:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.app.affinity }}
+      affinity:
+        {{ toYaml . | indent 2 }}
+      {{- end }}
+      
+      {{- with .Values.app.tolerations }}
+      tolerations:
+        {{ toYaml . | indent 8 }}
+      {{- end }}

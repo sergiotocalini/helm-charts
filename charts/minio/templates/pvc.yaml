@@ -4,7 +4,7 @@ metadata:
   name: {{ template "helmproj.fullname" . }}-data
 spec:
   accessModes:
-    - {{ .Values.pvc.accessModes | default "ReadWriteOnce" | quote }}
+    - {{ .Values.pvc.accessModes | default "ReadWriteMany" | quote }}
   storageClassName: {{ .Values.pvc.storageClassName | default "" | quote }}
   {{- if (lookup "v1" "PersistentVolumeClaim" "default" "test-pvc") }}
   volumeName: {{ (lookup "v1" "PersistentVolumeClaim" "default" "test-pvc").spec.volumeName }}

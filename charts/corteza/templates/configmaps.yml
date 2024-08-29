@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "helmproj.fullname" . }}-configs
+data:
+{{- if .Values.configmaps }}
+  {{- range $key, $value := .Values.configmaps }}
+  {{ $key }}: {{ $value | quote }}
+  {{- end }}
+{{- end }}

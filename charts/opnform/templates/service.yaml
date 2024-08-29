@@ -1,0 +1,78 @@
+{{- if and (.Values.worker.service) (.Values.worker.service.ports) }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: worker
+  labels:
+    app: {{ template "helmproj.name" . }}-worker
+    chart: {{ template "helmproj.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.worker.service.type }}
+  {{- with .Values.worker.service.ports }}
+  ports:
+    {{- range $index, $item :=  . }}
+    - port: {{ $item.port }}
+      targetPort: {{ $item.targetPort }}
+      protocol: {{ $item.protocol | default "TCP" }}
+      name: {{ $item.name }}
+    {{- end }}
+  {{- end }}
+  selector:
+    app: {{ template "helmproj.name" . }}-worker
+    release: {{ .Release.Name }}
+{{- end }}
+{{- if and (.Values.client.service) (.Values.client.service.ports) }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client
+  labels:
+    app: {{ template "helmproj.name" . }}-client
+    chart: {{ template "helmproj.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.client.service.type }}
+  {{- with .Values.client.service.ports }}
+  ports:
+    {{- range $index, $item :=  . }}
+    - port: {{ $item.port }}
+      targetPort: {{ $item.targetPort }}
+      protocol: {{ $item.protocol | default "TCP" }}
+      name: {{ $item.name }}
+    {{- end }}
+  {{- end }}
+  selector:
+    app: {{ template "helmproj.name" . }}-client
+    release: {{ .Release.Name }}
+{{- end }}
+{{- if and (.Values.nginx.service) (.Values.nginx.service.ports) }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    app: {{ template "helmproj.name" . }}-nginx
+    chart: {{ template "helmproj.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.nginx.service.type }}
+  {{- with .Values.nginx.service.ports }}
+  ports:
+    {{- range $index, $item :=  . }}
+    - port: {{ $item.port }}
+      targetPort: {{ $item.targetPort }}
+      protocol: {{ $item.protocol | default "TCP" }}
+      name: {{ $item.name }}
+    {{- end }}
+  {{- end }}
+  selector:
+    app: {{ template "helmproj.name" . }}-nginx
+    release: {{ .Release.Name }}
+{{- end }}

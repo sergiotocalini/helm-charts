@@ -1,0 +1,117 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+guacd:
+  replicas: 1
+  image:
+    repository: guacamole/guacd
+    pullPolicy: IfNotPresent
+  readinessProbe:
+    tcpSocket:
+      port: 4822
+    initialDelaySeconds: 300
+    periodSeconds: 60
+  livenessProbe:
+    tcpSocket:
+      port: 4822
+    initialDelaySeconds: 300
+    periodSeconds: 60
+  ports:
+    - name: guacd
+      containerPort: 4822
+      protocol: TCP
+  service:
+    annotations: {}
+    labels: {}
+    port: 4822
+    portName: guacd
+    type: ClusterIP
+  env: {}
+  secrets: {}
+  existingSecrets: []
+  resources:
+    limits:
+      cpu: 40m
+      memory: 512Mi
+    requests:
+      cpu: 20m
+      memory: 300Mi
+  service:
+    annotations: {}
+    labels: {}
+    ports:
+      - port: 4822
+        name: guacd
+        targetPort: 4822
+    type: ClusterIP
+  securityContext:
+    allowPrivilegeEscalation: false
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+        
+app:
+  replicas: 1
+  image:
+    repository: guacamole/guacamole
+    pullPolicy: IfNotPresent
+  readinessProbe:
+    tcpSocket:
+      port: 8080
+    initialDelaySeconds: 300
+    periodSeconds: 60
+  livenessProbe:
+    tcpSocket:
+      port: 8080
+    initialDelaySeconds: 300
+    periodSeconds: 60
+  ports:
+    - name: guacamole
+      containerPort: 8080
+      protocol: TCP
+  env: {}
+  secrets: {}
+  existingSecrets: []
+  resources:
+    limits:
+      cpu: 40m
+      memory: 512Mi
+    requests:
+      cpu: 20m
+      memory: 300Mi
+  service:
+    annotations: {}
+    labels: {}
+    ports:
+      - port: 8080
+        name: guacamole
+        targetPort: 8080
+        protocol: TCP
+    type: ClusterIP
+  securityContext:
+    allowPrivilegeEscalation: false        
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+        
+  
+ingress:
+  type: ingress
+  enabled: false
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-buffering: 'off'
+    nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
+    nginx.ingress.kubernetes.io/proxy-body-size: '1g'
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection $http_connection;
+    nginx.ingress.kubernetes.io/app-root: /guacamole
+  path: /guacamole
+  pathType: Prefix
+  hosts:
+    - localhost
+  tls:
+    - secretName: guacamole-tls
+      hosts:
+        - localhost
