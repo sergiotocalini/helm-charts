@@ -3,7 +3,9 @@ name: opnform
 version: "1.0.0"
 appVersion: "1.3.2"
 home: https://opnform.com/
-description: "Beautiful Open-Source Form Builder"
+description: |
+  Beautiful Open-Source Form Builder
+icon: https://opnform.com/img/logo.svg
 keywords:
   - rdp
   - ssh

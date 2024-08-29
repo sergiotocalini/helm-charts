@@ -1,6 +1,18 @@
 apiVersion: v2
-appVersion: 6.1-23.10_edge
-description: A Helm chart for squid
 name: squid
-type: application
 version: 1.0.0
+appVersion: 6.1-23.10_edge
+home: https://www.squid-cache.org/
+description: |
+  Squid Web Proxy Cache
+icon: https://avatars.githubusercontent.com/u/363029?s=48&v=4
+keywords:
+  - squid
+  - proxy
+sources:
+  - https://github.com/squid-cache/squid
+type: application
+maintainers:
+  - name: "Sergio Tocalini"
+    email: sergiotocalini@gmail.com
+    url: https://sergiotocalini.github.io

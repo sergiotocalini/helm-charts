@@ -3,7 +3,9 @@ name: corteza
 version: "1.0.0"
 appVersion: "2023.9.7"
 home: https://github.com/cortezaproject/corteza
-description: "cortezaproject.org"
+description: |
+  Low-code platform
+icon: https://avatars.githubusercontent.com/u/50577806?s=48&v=4
 keywords:
   - crm
 sources:

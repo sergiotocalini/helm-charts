@@ -1,6 +1,17 @@
 apiVersion: v2
-appVersion: v2.10.22
-description: A Helm chart for ansible-semaphore
 name: ansible-semaphore
-type: application
 version: 1.1.0
+appVersion: v2.10.22
+home: https://semaphoreui.com
+description: |
+  A Helm chart for ansible-semaphore
+icon: https://avatars.githubusercontent.com/u/98574287?s=48&v=4
+keywords:
+  - ansible
+sources:
+  - https://github.com/semaphoreui/semaphore
+type: application
+maintainers:
+  - name: "Sergio Tocalini"
+    email: sergiotocalini@gmail.com
+    url: https://sergiotocalini.github.io
