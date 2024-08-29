@@ -3,20 +3,20 @@ entries:
   ansible-semaphore:
   - apiVersion: v2
     appVersion: v2.10.22
-    created: "2024-08-29T13:44:43.157741145Z"
+    created: "2024-08-29T13:53:49.846356773Z"
     description: A Helm chart for ansible-semaphore
-    digest: 5f5aa147e2975221b3657baaa3f1fb17f02861d8ede83ad11c16467d1bc7720e
+    digest: f26f6a18ac81166d26f521e93a772a10dafbf1a9157654055fe36fa721716bd5
     name: ansible-semaphore
     type: application
     urls:
-    - ansible-semaphore-1.1.0.tgz
+    - ansible-semaphore/ansible-semaphore-1.1.0.tgz
     version: 1.1.0
   corteza:
   - apiVersion: v2
     appVersion: 2023.9.7
-    created: "2024-08-29T13:44:43.158218496Z"
+    created: "2024-08-29T13:53:49.846837022Z"
     description: cortezaproject.org
-    digest: 64e57ad3d33668437761cb220e3b3e1261520839be4411d32c42aeefd7d462b3
+    digest: f8b612ce72e755e7a49855138cececddf4d04e4bb04b5b8d9359edcb7ba6dcef
     home: https://github.com/cortezaproject/corteza
     keywords:
     - crm
@@ -29,15 +29,15 @@ entries:
     - https://github.com/cortezaproject/corteza
     type: application
     urls:
-    - corteza-1.0.0.tgz
+    - corteza/corteza-1.0.0.tgz
     version: 1.0.0
   dashy:
   - apiVersion: v2
     appVersion: 2.1.1
-    created: "2024-08-29T13:44:43.158664808Z"
+    created: "2024-08-29T13:53:49.847105946Z"
     description: 'A self-hostable personal dashboard built for you. Includes status-checking,
       widgets, themes, icon packs, a UI editor and tons more! '
-    digest: 9c0cc7e7406b14f3565069fef4abde023919598417ea635b645916e5ff46c1f1
+    digest: 47be25daa527ff7fcbd055bc72b3ca586b0b7f4926cba0fb3a191a9b6bc26c49
     home: https://dashy.to
     keywords:
     - homelab
@@ -51,14 +51,14 @@ entries:
     - https://github.com/Lissy93/dashy
     type: application
     urls:
-    - dashy-1.0.0.tgz
+    - dashy/dashy-1.0.0.tgz
     version: 1.0.0
   guacamole:
   - apiVersion: v2
     appVersion: 1.5.5
-    created: "2024-08-29T13:44:43.159287339Z"
+    created: "2024-08-29T13:53:49.84775414Z"
     description: guacamole.apache.org
-    digest: 684af220d3f6e0b833ee2d8baae7a9aa699e450f2c40016580f82670ba681038
+    digest: d13f025b748fcce153e0d88a7ef2ceb4b0721a715951bf8e1c2bcdf8979c9334
     home: https://guacamole.apache.org
     keywords:
     - rdp
@@ -73,7 +73,7 @@ entries:
     - https://github.com/apache/guacamole-server
     type: application
     urls:
-    - guacamole-1.0.0.tgz
+    - guacamole/guacamole-1.0.0.tgz
     version: 1.0.0
   mavapa:
   - apiVersion: v2
@@ -97,33 +97,12 @@ entries:
     urls:
     - mavapa-1.0.0.tgz
     version: 1.0.0
-  - apiVersion: v2
-    appVersion: 1.0.0
-    created: "2024-08-29T13:44:43.162898963Z"
-    description: A mavapa Helm chart for Kubernetes
-    digest: f0196179d0cb956b5c4a4ea142561187dbdc39d0659c1fa8cbe3e754ece8fba9
-    home: https://github.com/sergiotocalini/mavapa
-    keywords:
-    - idp
-    - iam
-    - identity
-    maintainers:
-    - email: sergiotocalini@gmail.com
-      name: Sergio Tocalini
-      url: https://sergiotocalini.github.io
-    name: mavapa
-    sources:
-    - https://github.com/sergiotocalini/mavapa
-    type: application
-    urls:
-    - mavapa/mavapa-1.0.0.tgz
-    version: 1.0.0
   minio:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-08-29T13:44:43.160260574Z"
+    created: "2024-08-29T13:53:49.848205926Z"
     description: Helm chart for MinIO
-    digest: fc253de015e702b4d771c3c35051de4cc5f606380e73dd51c42239276b468584
+    digest: 4d0fd59a6007492be4ae96c4fe65aa3170103fd01d31c9fd074cecacbb580f8c
     home: https://github.com/sergiotocalini/helm-charts/charts/minio
     maintainers:
     - email: sergiotocalini@gmail.com
@@ -132,14 +111,14 @@ entries:
     name: minio
     type: application
     urls:
-    - minio-1.0.0.tgz
+    - minio/minio-1.0.0.tgz
     version: 1.0.0
   opnform:
   - apiVersion: v2
     appVersion: 1.3.2
-    created: "2024-08-29T13:44:43.161121248Z"
+    created: "2024-08-29T13:53:49.84902475Z"
     description: Beautiful Open-Source Form Builder
-    digest: 7efa185b6f997eae0e4e182f19289bd44f18d43d652a8127d501f2844dda0e58
+    digest: fc9b021aefd8c19c62a08311f40f29b158db05e88c47ac70add5946e08a2ecf7
     home: https://opnform.com/
     keywords:
     - rdp
@@ -154,7 +133,7 @@ entries:
     - https://github.com/JhumanJ/OpnForm
     type: application
     urls:
-    - opnform-1.0.0.tgz
+    - opnform/opnform-1.0.0.tgz
     version: 1.0.0
   safbi:
   - apiVersion: v2
@@ -176,34 +155,15 @@ entries:
     urls:
     - safbi-1.0.0.tgz
     version: 1.0.0
-  - apiVersion: v2
-    appVersion: 1.0.0
-    created: "2024-08-29T13:44:43.164277088Z"
-    description: A safbi Helm chart for Kubernetes
-    digest: 58f9e8225cc60153a57bec8a450769885c91e18713c8b09ca32531eeeefcbfed
-    home: https://github.com/sergiotocalini/safbi
-    keywords:
-    - monitoring
-    maintainers:
-    - email: sergiotocalini@gmail.com
-      name: Sergio Tocalini
-      url: https://sergiotocalini.github.io
-    name: safbi
-    sources:
-    - https://github.com/sergiotocalini/safbi
-    type: application
-    urls:
-    - safbi/safbi-1.0.0.tgz
-    version: 1.0.0
   squid:
   - apiVersion: v2
     appVersion: 6.1-23.10_edge
-    created: "2024-08-29T13:44:43.162309795Z"
+    created: "2024-08-29T13:53:49.84960672Z"
     description: A Helm chart for squid
-    digest: b12122719f751447d11bf164cdb19bbd56e274f5b2988da0a5cc3904842fcff9
+    digest: a8391a549c691d59497230978a366ee9d9f4313fdf52b79d589fe183db524c70
     name: squid
     type: application
     urls:
-    - squid-1.0.0.tgz
+    - squid/squid-1.0.0.tgz
     version: 1.0.0
-generated: "2024-08-29T13:44:43.157078139Z"
+generated: "2024-08-29T13:53:49.845707456Z"
