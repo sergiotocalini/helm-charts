@@ -1,9 +1,105 @@
 apiVersion: v1
 entries:
+  ansible-semaphore:
+  - apiVersion: v2
+    appVersion: v2.10.22
+    created: "2024-08-29T13:44:43.157741145Z"
+    description: A Helm chart for ansible-semaphore
+    digest: 5f5aa147e2975221b3657baaa3f1fb17f02861d8ede83ad11c16467d1bc7720e
+    name: ansible-semaphore
+    type: application
+    urls:
+    - ansible-semaphore-1.1.0.tgz
+    version: 1.1.0
+  corteza:
+  - apiVersion: v2
+    appVersion: 2023.9.7
+    created: "2024-08-29T13:44:43.158218496Z"
+    description: cortezaproject.org
+    digest: 64e57ad3d33668437761cb220e3b3e1261520839be4411d32c42aeefd7d462b3
+    home: https://github.com/cortezaproject/corteza
+    keywords:
+    - crm
+    maintainers:
+    - email: sergiotocalini@gmail.com
+      name: Sergio Tocalini
+      url: https://sergiotocalini.github.io
+    name: corteza
+    sources:
+    - https://github.com/cortezaproject/corteza
+    type: application
+    urls:
+    - corteza-1.0.0.tgz
+    version: 1.0.0
+  dashy:
+  - apiVersion: v2
+    appVersion: 2.1.1
+    created: "2024-08-29T13:44:43.158664808Z"
+    description: 'A self-hostable personal dashboard built for you. Includes status-checking,
+      widgets, themes, icon packs, a UI editor and tons more! '
+    digest: 9c0cc7e7406b14f3565069fef4abde023919598417ea635b645916e5ff46c1f1
+    home: https://dashy.to
+    keywords:
+    - homelab
+    - dashboard
+    maintainers:
+    - email: sergiotocalini@gmail.com
+      name: Sergio Tocalini
+      url: https://sergiotocalini.github.io
+    name: dashy
+    sources:
+    - https://github.com/Lissy93/dashy
+    type: application
+    urls:
+    - dashy-1.0.0.tgz
+    version: 1.0.0
+  guacamole:
+  - apiVersion: v2
+    appVersion: 1.5.5
+    created: "2024-08-29T13:44:43.159287339Z"
+    description: guacamole.apache.org
+    digest: 684af220d3f6e0b833ee2d8baae7a9aa699e450f2c40016580f82670ba681038
+    home: https://guacamole.apache.org
+    keywords:
+    - rdp
+    - ssh
+    - vnc
+    maintainers:
+    - email: sergiotocalini@gmail.com
+      name: Sergio Tocalini
+      url: https://sergiotocalini.github.io
+    name: guacamole
+    sources:
+    - https://github.com/apache/guacamole-server
+    type: application
+    urls:
+    - guacamole-1.0.0.tgz
+    version: 1.0.0
   mavapa:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-08-02T19:44:28.416397977Z"
+    created: "2024-08-29T13:44:43.159796899Z"
+    description: A mavapa Helm chart for Kubernetes
+    digest: f0196179d0cb956b5c4a4ea142561187dbdc39d0659c1fa8cbe3e754ece8fba9
+    home: https://github.com/sergiotocalini/mavapa
+    keywords:
+    - idp
+    - iam
+    - identity
+    maintainers:
+    - email: sergiotocalini@gmail.com
+      name: Sergio Tocalini
+      url: https://sergiotocalini.github.io
+    name: mavapa
+    sources:
+    - https://github.com/sergiotocalini/mavapa
+    type: application
+    urls:
+    - mavapa-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-08-29T13:44:43.162898963Z"
     description: A mavapa Helm chart for Kubernetes
     digest: f0196179d0cb956b5c4a4ea142561187dbdc39d0659c1fa8cbe3e754ece8fba9
     home: https://github.com/sergiotocalini/mavapa
@@ -22,10 +118,67 @@ entries:
     urls:
     - mavapa/mavapa-1.0.0.tgz
     version: 1.0.0
+  minio:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-08-29T13:44:43.160260574Z"
+    description: Helm chart for MinIO
+    digest: fc253de015e702b4d771c3c35051de4cc5f606380e73dd51c42239276b468584
+    home: https://github.com/sergiotocalini/helm-charts/charts/minio
+    maintainers:
+    - email: sergiotocalini@gmail.com
+      name: Sergio Tocalini
+      url: https://sergiotocalini.github.io
+    name: minio
+    type: application
+    urls:
+    - minio-1.0.0.tgz
+    version: 1.0.0
+  opnform:
+  - apiVersion: v2
+    appVersion: 1.3.2
+    created: "2024-08-29T13:44:43.161121248Z"
+    description: Beautiful Open-Source Form Builder
+    digest: 7efa185b6f997eae0e4e182f19289bd44f18d43d652a8127d501f2844dda0e58
+    home: https://opnform.com/
+    keywords:
+    - rdp
+    - ssh
+    - vnc
+    maintainers:
+    - email: sergiotocalini@gmail.com
+      name: Sergio Tocalini
+      url: https://sergiotocalini.github.io
+    name: opnform
+    sources:
+    - https://github.com/JhumanJ/OpnForm
+    type: application
+    urls:
+    - opnform-1.0.0.tgz
+    version: 1.0.0
   safbi:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-08-02T19:44:28.41689813Z"
+    created: "2024-08-29T13:44:43.161693636Z"
+    description: A safbi Helm chart for Kubernetes
+    digest: 58f9e8225cc60153a57bec8a450769885c91e18713c8b09ca32531eeeefcbfed
+    home: https://github.com/sergiotocalini/safbi
+    keywords:
+    - monitoring
+    maintainers:
+    - email: sergiotocalini@gmail.com
+      name: Sergio Tocalini
+      url: https://sergiotocalini.github.io
+    name: safbi
+    sources:
+    - https://github.com/sergiotocalini/safbi
+    type: application
+    urls:
+    - safbi-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-08-29T13:44:43.164277088Z"
     description: A safbi Helm chart for Kubernetes
     digest: 58f9e8225cc60153a57bec8a450769885c91e18713c8b09ca32531eeeefcbfed
     home: https://github.com/sergiotocalini/safbi
@@ -42,4 +195,15 @@ entries:
     urls:
     - safbi/safbi-1.0.0.tgz
     version: 1.0.0
-generated: "2024-08-02T19:44:28.41571363Z"
+  squid:
+  - apiVersion: v2
+    appVersion: 6.1-23.10_edge
+    created: "2024-08-29T13:44:43.162309795Z"
+    description: A Helm chart for squid
+    digest: b12122719f751447d11bf164cdb19bbd56e274f5b2988da0a5cc3904842fcff9
+    name: squid
+    type: application
+    urls:
+    - squid-1.0.0.tgz
+    version: 1.0.0
+generated: "2024-08-29T13:44:43.157078139Z"
