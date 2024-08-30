@@ -1,8 +1,8 @@
-# evguine
+# guacamole
 
-[evguine](https://github.com/zontik/evguine) identity provider using several backend sources.
+[guacamole](https://github.com/sergiotocalini/guacamole) identity provider using several backend sources.
 
-This chart bootstraps an evguine deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps an guacamole deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 ## Get Repo Info
 
@@ -14,7 +14,7 @@ helm repo update
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] zontik/evguine
+helm install [RELEASE_NAME] sergiotocalini/guacamole
 ```
 
 The command deploys ingress-nginx on the Kubernetes cluster in the default configuration.
@@ -46,5 +46,5 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values zontik/evguine
+helm show values sergiotocalini/guacamole
 ```

@@ -3,6 +3,7 @@ name: dashy
 version: "1.0.0"
 appVersion: "2.1.1"
 home: https://dashy.to
+icon: https://dashy.to/img/dashy.png
 description: |
   A self-hostable personal dashboard built for you.
   Includes status-checking, widgets, themes, icon packs, a UI editor and tons more!
