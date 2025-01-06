@@ -9,7 +9,7 @@ image:
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   # https://hub.docker.com/r/semaphoreui/semaphore/tags
-  tag: "6.1-23.10_edge"
+  tag: "6.10-24.10_edge"
 
 pvc:
   accessModes: "ReadWriteOnce"
