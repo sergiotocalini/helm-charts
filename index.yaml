@@ -3,9 +3,9 @@ entries:
   ansible-semaphore:
   - apiVersion: v2
     appVersion: v2.10.22
-    created: "2025-01-06T11:12:08.754369664Z"
+    created: "2025-01-06T11:22:40.194456507Z"
     description: 'Modern UI for Ansible, Terraform, OpenTofu, Bash, Pulumi. '
-    digest: 8882e8d837b7e7bdf6e447c5f9faefea136131beaab692913b254457afc0fabe
+    digest: ba92541b6362ab0562c207f7b83eb750a14bf5e74462bdaf7b7fe315781dd2c9
     home: https://semaphoreui.com
     icon: https://avatars.githubusercontent.com/u/98574287?s=48&v=4
     keywords:
@@ -24,9 +24,9 @@ entries:
   corteza:
   - apiVersion: v2
     appVersion: 2023.9.7
-    created: "2025-01-06T11:12:08.755275823Z"
+    created: "2025-01-06T11:22:40.194939609Z"
     description: 'Low-code platform '
-    digest: c9eb051a264cf26d7c9b6f2e8247a23ad7eaea8df4242aa7dbaf5df7af615d64
+    digest: 74d1ca76d1d20bfbf9021e8eccdc3ac5f8bae16486b8468d05cc497606a929e5
     home: https://github.com/cortezaproject/corteza
     icon: https://avatars.githubusercontent.com/u/50577806?s=48&v=4
     keywords:
@@ -45,10 +45,10 @@ entries:
   dashy:
   - apiVersion: v2
     appVersion: 2.1.1
-    created: "2025-01-06T11:12:08.755564019Z"
+    created: "2025-01-06T11:22:40.195227296Z"
     description: 'A self-hostable personal dashboard built for you. Includes status-checking,
       widgets, themes, icon packs, a UI editor and tons more! '
-    digest: 7486c8d34985f4be278ee4bf96247a850055397b2c2397298ca03c8fbb5b3baa
+    digest: ea2e3e1b527e5721506b4e147b7f4af858f9319a37c85e6091079df560798135
     home: https://dashy.to
     icon: https://dashy.to/img/dashy.png
     keywords:
@@ -68,10 +68,10 @@ entries:
   guacamole:
   - apiVersion: v2
     appVersion: 1.5.5
-    created: "2025-01-06T11:12:08.756187379Z"
+    created: "2025-01-06T11:22:40.195827606Z"
     description: 'Apache Guacamole is a clientless remote desktop gateway. It supports
       standard protocols like VNC, RDP, and SSH. '
-    digest: 0faffc6b5c290a66fa1f43690a1616faab1776e67563edd76ee594b292409b73
+    digest: 4aa521c92181905735a018ae4bbc23b3bba5d4f59f6328495d9c22b36605ecb6
     home: https://guacamole.apache.org
     icon: https://guacamole.apache.org/images/logos/guac-tricolor-logo.svg
     keywords:
@@ -92,7 +92,7 @@ entries:
   mavapa:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-01-06T11:12:08.75667188Z"
+    created: "2025-01-06T11:22:40.1963172Z"
     description: A mavapa Helm chart for Kubernetes
     digest: f0196179d0cb956b5c4a4ea142561187dbdc39d0659c1fa8cbe3e754ece8fba9
     home: https://github.com/sergiotocalini/mavapa
@@ -114,10 +114,10 @@ entries:
   minio:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-01-06T11:12:08.757180887Z"
+    created: "2025-01-06T11:22:40.1967402Z"
     description: 'MinIO is a high-performance, S3 compatible object store, open sourced
       under GNU AGPLv3 license. '
-    digest: acec37e0e86c532e1f7f8bc8c1c9dc4dda94fab953bea10bcaf1fbf4f79db557
+    digest: 625d68a3d1fe54b368dab273f6fa212e54ee82448c0ef9520a32bfe981c1ae39
     home: https://min.io
     icon: https://avatars.githubusercontent.com/u/695951?s=48&v=4
     keywords:
@@ -138,9 +138,9 @@ entries:
   opnform:
   - apiVersion: v2
     appVersion: 1.3.2
-    created: "2025-01-06T11:12:08.758079548Z"
+    created: "2025-01-06T11:22:40.197436069Z"
     description: 'Beautiful Open-Source Form Builder '
-    digest: 7317fea6cf4e786535556bccb4088509d32b6ce994fdd5ed21fdb63bc83de529
+    digest: cb1c67211645e1b4c4c7bfaae3d04ac4dd25c3034a0eba67ba9c7dce18b8ab37
     home: https://opnform.com/
     icon: https://opnform.com/img/logo.svg
     keywords:
@@ -161,7 +161,7 @@ entries:
   safbi:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-01-06T11:12:08.758637316Z"
+    created: "2025-01-06T11:22:40.197870549Z"
     description: A safbi Helm chart for Kubernetes
     digest: 58f9e8225cc60153a57bec8a450769885c91e18713c8b09ca32531eeeefcbfed
     home: https://github.com/sergiotocalini/safbi
@@ -181,9 +181,9 @@ entries:
   squid:
   - apiVersion: v2
     appVersion: 6.1-23.10_edge
-    created: "2025-01-06T11:12:08.759398642Z"
+    created: "2025-01-06T11:22:40.198450081Z"
     description: 'Squid Web Proxy Cache '
-    digest: 76a4eb407aa9b92e9b0cbed0029da66e890dc127b4a79f94ce4e1d7298f02972
+    digest: 8e4f8d28b13e9c92757bf86a75b108ed0e66169af0d0fc1be9d1945f848569d6
     home: https://www.squid-cache.org/
     icon: https://avatars.githubusercontent.com/u/363029?s=48&v=4
     keywords:
@@ -200,4 +200,4 @@ entries:
     urls:
     - squid/squid-1.0.0.tgz
     version: 1.0.0
-generated: "2025-01-06T11:12:08.753214996Z"
+generated: "2025-01-06T11:22:40.193366805Z"
