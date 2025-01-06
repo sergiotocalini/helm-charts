@@ -1,7 +1,7 @@
 apiVersion: v2
 name: squid
 version: 1.0.0
-appVersion: 6.1-23.10_edge
+appVersion: 6.10-24.10_edge
 home: https://www.squid-cache.org/
 description: |
   Squid Web Proxy Cache
