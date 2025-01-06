@@ -46,21 +46,24 @@ spec:
           #     path: /
           #     port: http
           {{- if .Values.volumeMounts }}
-          {{- if or .Values.volumeMounts.configmaps .Values.volumeMounts.secrets }}
           volumeMounts:
+            - name: squid-data-vol
+              mountPath: /var/spool/squid
+            - name: squid-config-vol
+              mountPath: /etc/squid/squid.conf
+              subPath: squid.conf
             {{- range $key, $val := .Values.volumeMounts.configmaps }}
-            - name: configs
+            - name: {{ $key }}
               mountPath: {{ $.Values.volumeMountsPath.configmaps }}/{{ $key }}
               subPath: {{ $key }}
               readOnly: true
             {{- end }}
             {{- range $key, $val := .Values.volumeMounts.secrets }}
-            - name: secrets
+            - name: {{ $key }}
               mountPath: {{ $.Values.volumeMountsPath.secrets }}/{{ $key }}
               subPath: {{ $key }}
               readOnly: true
             {{- end }}
-          {{- end }}
           {{- end }}
           {{- if .Values.envFrom }}
           {{- if or .Values.envFrom.configmaps .Values.envFrom.secrets }}
@@ -84,19 +87,27 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      {{- if or .Values.volumeMounts.configmaps .Values.volumeMounts.secrets }}
       volumes:
-        {{- if .Values.volumeMounts.configmaps }}
-        - name: configs
+        - name: squid-data-vol
+          persistentVolumeClaim:
+            claimName: {{ template "helmproj.fullname" . }}-data
+        - name: squid-config-vol
+          configMap:
+            name: {{ template "helmproj.fullname" . }}-config
+            items:
+            - key: squid.conf
+              path: squid.conf
+        {{- range $key, $val := .Values.volumeMounts.configmaps }}
+        - name: {{ $key }}
           configMap:
             name: {{ template "helmproj.fullname" . }}-vols
         {{- end }}
-        {{- if .Values.volumeMounts.secrets }}
-        - name: secrets
+        {{- range $key, $val := .Values.volumeMounts.secrets }}
+        - name: {{ $key }}
           secret:
             secretName: {{ template "helmproj.fullname" . }}-vols
         {{- end }}
-      {{- end }}
+
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
