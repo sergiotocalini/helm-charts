@@ -1,0 +1,115 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+fullnameOverride: cachet
+replicas: 1
+image:
+  repository: cachethq/docker
+  pullPolicy: IfNotPresent
+  tag: 2.3.15
+
+ports:
+  - name: http
+    containerPort: 8000
+    protocol: TCP
+    
+service:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+
+probes:
+  enabled: false
+  liveness:
+    httpGet:
+      path: /api/v1/ping
+      port: http
+  readiness:
+    httpGet:
+      path: /api/v1/ping
+      port: http
+  
+ingress:
+  type: ingress
+  enabled: false
+  ingressClassName: nginx
+  annotations:
+    # kubernetes.io/ingress.class: nginx
+    # nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  pathType: Prefix
+  hosts:
+    - localhost
+  tls:
+    - secretName: cachet-tls
+      hosts:
+        - localhost
+
+env: {}
+
+configmaps:
+  APP_DEBUG: false
+  APP_LOG: errorlog
+  DB_DRIVER: pgsql
+  DOCKER: true
+  CACHE_DRIVER: database
+  SESSION_DRIVER: database
+  QUEUE_DRIVER: database
+  CACHET_EMOJI: false
+  CACHET_BEACON: false
+  # MAIL_DRIVER: smtp
+  # MAIL_HOST: ""
+  # MAIL_ADDRESS: ""
+  # MAIL_PORT: 25
+  # MAIL_NAME: ""
+  # MAIL_ENCRYPTION: tls
+
+secrets:
+  # APP_KEY: ""
+  # MAIL_USERNAME: ""
+  # MAIL_PASSWORD: ""
+  # DB_HOST: ""
+  # DB_DATABASE: ""
+  # DB_USERNAME: ""
+  # DB_PASSWORD: ""
+  # DB_PORT: ""
+  # APP_ENV: "production"
+  # APP_URL: ""
+
+existingSecrets: [] 
+
+# We usually recommend not to specify default resources and to leave this as a conscious
+# choice for the user. This also increases chances charts run on environments with little
+# resources, such as Minikube. If you do want to specify resources, uncomment the following
+# lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# startupProbe:
+#   failureThreshold: 5
+#   httpGet:
+#     path: /healthcheck
+#     port: 80
+#     scheme: HTTP
+#   initialDelaySeconds: 30
+#   periodSeconds: 3
+#   successThreshold: 1
+#   timeoutSeconds: 1
+    
+securityContext:
+  allowPrivilegeEscalation: false
+    
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

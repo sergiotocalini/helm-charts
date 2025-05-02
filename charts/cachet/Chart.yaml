@@ -1,0 +1,20 @@
+apiVersion: v2
+name: cachet
+version: "1.0.0"
+appVersion: "2.3.15"
+home: https://cachethq.io/
+description: |
+  The open source status page system
+icon: https://avatars.githubusercontent.com/u/50577806?s=48&v=4
+sources:
+  - https://github.com/CachetHQ/Docker
+  - https://github.com/CachetHQ/Cachet
+type: application
+maintainers:
+  - name: "Sergio Tocalini"
+    email: sergiotocalini@gmail.com
+    url: https://sergiotocalini.github.io
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/sergiotocalini/helm-charts/tree/master/charts/cachet
