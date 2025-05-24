@@ -100,12 +100,12 @@ spec:
         {{- range $key, $val := .Values.volumeMounts.configmaps }}
         - name: {{ $key }}
           configMap:
-            name: {{ template "helmproj.fullname" . }}-vols
+            name: {{ template "helmproj.fullname" $ }}-vols
         {{- end }}
         {{- range $key, $val := .Values.volumeMounts.secrets }}
         - name: {{ $key }}
           secret:
-            secretName: {{ template "helmproj.fullname" . }}-vols
+            secretName: {{ template "helmproj.fullname" $ }}-vols
         {{- end }}
 
       {{- with .Values.nodeSelector }}
