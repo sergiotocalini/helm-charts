@@ -3,9 +3,9 @@ entries:
   ansible-semaphore:
   - apiVersion: v2
     appVersion: v2.10.22
-    created: "2025-05-02T15:26:58.565717081Z"
+    created: "2025-06-24T09:36:21.212786431Z"
     description: 'Modern UI for Ansible, Terraform, OpenTofu, Bash, Pulumi. '
-    digest: 17a7fc44e1f0d42f6af5d19e1bc3c76048b7b92fdeff47c1f0c0f38247886cd0
+    digest: dd61d38d6dc4c384f1df349b18b3e74cb66a8d2da260afce18ac7060d949a0bd
     home: https://semaphoreui.com
     icon: https://avatars.githubusercontent.com/u/98574287?s=48&v=4
     keywords:
@@ -28,9 +28,9 @@ entries:
           url: https://github.com/sergiotocalini/helm-charts/tree/master/charts/cachet
     apiVersion: v2
     appVersion: 2.3.15
-    created: "2025-05-02T15:26:58.566725971Z"
+    created: "2025-06-24T09:36:21.213648966Z"
     description: 'The open source status page system '
-    digest: 5e28bdf949b8438f9bdefad0ec50975a5da1ce2329dc4fafcbe7028553ef4342
+    digest: 899b46243f42aae36cf77b1902070fafe452274681116dc62c9fc256e14bc5e3
     home: https://cachethq.io/
     icon: https://avatars.githubusercontent.com/u/50577806?s=48&v=4
     maintainers:
@@ -48,9 +48,9 @@ entries:
   corteza:
   - apiVersion: v2
     appVersion: 2023.9.7
-    created: "2025-05-02T15:26:58.567560536Z"
+    created: "2025-06-24T09:36:21.214099339Z"
     description: 'Low-code platform '
-    digest: bb094b3fe06d2a92dfc976b9247cdf64eafeb7de6aee89d8f2e7cfb2684d2483
+    digest: 102f377270c8128499a2aa40347d6b684ac64d8a030db6c1704edb2f535568e5
     home: https://github.com/cortezaproject/corteza
     icon: https://avatars.githubusercontent.com/u/50577806?s=48&v=4
     keywords:
@@ -69,10 +69,10 @@ entries:
   dashy:
   - apiVersion: v2
     appVersion: 2.1.1
-    created: "2025-05-02T15:26:58.56804287Z"
+    created: "2025-06-24T09:36:21.214360729Z"
     description: 'A self-hostable personal dashboard built for you. Includes status-checking,
       widgets, themes, icon packs, a UI editor and tons more! '
-    digest: 6327bbafa3a72ebd91266c3a862a97e5158979161b1e092371f3c6740e5df757
+    digest: a0d4e07ddbfcbbfc7e98edd2cd84eb6b81a19458fb229955cde06471a75de216
     home: https://dashy.to
     icon: https://dashy.to/img/dashy.png
     keywords:
@@ -92,10 +92,10 @@ entries:
   guacamole:
   - apiVersion: v2
     appVersion: 1.5.5
-    created: "2025-05-02T15:26:58.569204427Z"
+    created: "2025-06-24T09:36:21.214969309Z"
     description: 'Apache Guacamole is a clientless remote desktop gateway. It supports
       standard protocols like VNC, RDP, and SSH. '
-    digest: 134590488313b4a972b00f0e1e1ebdfb24556fe708cdd313aed61a57594b2a80
+    digest: b4f1ae49f936c57a998fd3260d4b3c19f6422828a805143c7efd6265c8eca58c
     home: https://guacamole.apache.org
     icon: https://guacamole.apache.org/images/logos/guac-tricolor-logo.svg
     keywords:
@@ -116,7 +116,7 @@ entries:
   mavapa:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-05-02T15:26:58.570089816Z"
+    created: "2025-06-24T09:36:21.215404193Z"
     description: A mavapa Helm chart for Kubernetes
     digest: f0196179d0cb956b5c4a4ea142561187dbdc39d0659c1fa8cbe3e754ece8fba9
     home: https://github.com/sergiotocalini/mavapa
@@ -138,10 +138,10 @@ entries:
   minio:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-05-02T15:26:58.570931113Z"
+    created: "2025-06-24T09:36:21.215862231Z"
     description: 'MinIO is a high-performance, S3 compatible object store, open sourced
       under GNU AGPLv3 license. '
-    digest: a0ea0dfd2aef014ccc79ea435161a895e5200c96cd631cbd1271d5c1bfb12d86
+    digest: bd75f9d7a7c644ec74498930bd094a71f738c320085b52f23c22420bb92ea193
     home: https://min.io
     icon: https://avatars.githubusercontent.com/u/695951?s=48&v=4
     keywords:
@@ -162,9 +162,9 @@ entries:
   opnform:
   - apiVersion: v2
     appVersion: 1.3.2
-    created: "2025-05-02T15:26:58.57224748Z"
+    created: "2025-06-24T09:36:21.216614179Z"
     description: 'Beautiful Open-Source Form Builder '
-    digest: 3db00a19fc4098b847ec3c8d4d3ba7b33a49502e53af222a2303a60087edf947
+    digest: 2e7a40ce807e5fb1f344a39b297cdccc2e9f97ff86f417a69b9c40311162b5aa
     home: https://opnform.com/
     icon: https://opnform.com/img/logo.svg
     keywords:
@@ -182,10 +182,33 @@ entries:
     urls:
     - opnform/opnform-1.0.0.tgz
     version: 1.0.0
+  rdpgw:
+  - annotations:
+      artifacthub.io/links: |
+        - name: Helm chart source
+          url: https://github.com/sergiotocalini/helm-charts/tree/master/charts/rdpgw
+    apiVersion: v2
+    appVersion: 2.0.2
+    created: "2025-06-24T09:36:21.217135636Z"
+    description: 'Remote Desktop Gateway in Go for deploying on Linux/BSD/Kubernetes '
+    digest: fdf30be67ffd536c6ae0a6d5cc3e0ed3914ec4628c494902a12333ec0ad631ed
+    home: https://github.com/bolkedebruin/rdpgw
+    icon: https://www.zdv.uni-mainz.de/files/Microsoft-Remote-Desktop-10-AppIcon-4.png
+    maintainers:
+    - email: sergiotocalini@gmail.com
+      name: Sergio Tocalini
+      url: https://sergiotocalini.github.io
+    name: rdpgw
+    sources:
+    - https://github.com/bolkedebruin/rdpgw
+    type: application
+    urls:
+    - rdpgw/rdpgw-1.0.0.tgz
+    version: 1.0.0
   safbi:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-05-02T15:26:58.573113974Z"
+    created: "2025-06-24T09:36:21.217584026Z"
     description: A safbi Helm chart for Kubernetes
     digest: 58f9e8225cc60153a57bec8a450769885c91e18713c8b09ca32531eeeefcbfed
     home: https://github.com/sergiotocalini/safbi
@@ -205,9 +228,9 @@ entries:
   squid:
   - apiVersion: v2
     appVersion: 6.10-24.10_edge
-    created: "2025-05-02T15:26:58.57418441Z"
+    created: "2025-06-24T09:36:21.218206732Z"
     description: 'Squid Web Proxy Cache '
-    digest: 04d7256f119e0cfec455f36656e1a5929a3cc3d8b6e26d7bd7028a8283c598c0
+    digest: 82de179884b855c77051eb8fac6b0d7f139945550e3ba3cd3da175a0bc8789fe
     home: https://www.squid-cache.org/
     icon: https://avatars.githubusercontent.com/u/363029?s=48&v=4
     keywords:
@@ -224,4 +247,4 @@ entries:
     urls:
     - squid/squid-1.0.0.tgz
     version: 1.0.0
-generated: "2025-05-02T15:26:58.564194723Z"
+generated: "2025-06-24T09:36:21.211507215Z"
