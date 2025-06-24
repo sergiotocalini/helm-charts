@@ -1,0 +1,134 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+fullnameOverride: rdpgw
+replicas: 1
+image:
+  repository: bolkedebruin/rdpgw
+  pullPolicy: IfNotPresent
+  tag: master
+
+
+ports:
+  - name: rdpgw
+    containerPort: 9443
+    protocol: TCP
+    
+service:
+  type: ClusterIP
+  ports:
+    - port: 9443
+      targetPort: rdpgw
+      protocol: TCP
+      name: http
+
+probes:
+  enabled: false
+  liveness:
+    httpGet:
+      path: /api/v1/ping
+      port: http
+  readiness:
+    httpGet:
+      path: /api/v1/ping
+      port: http
+  
+ingress:
+  type: ingress
+  enabled: false
+  ingressClassName: nginx
+  annotations:
+    # kubernetes.io/ingress.class: nginx
+    # nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  pathType: Prefix
+  hosts:
+    - localhost
+  tls:
+    - secretName: rdpgw-tls
+      hosts:
+        - localhost
+
+env: {}
+
+rdpgw_config: |-
+  Server:
+    Tls: disable
+    GatewayAddress: localhost
+    Port: 9443
+    Hosts:
+     - any
+    RoundRobin: false
+    SessionKey: thisisasessionkeyreplacethisjetz
+    SessionEncryptionKey: thisisasessionkeyreplacethisnunu
+    SessionStore: cookie
+  # OpenId:
+  #   ProviderUrl: http://keycloak:8080/auth/realms/rdpgw
+  #   ClientId: rdpgw
+  #   ClientSecret: 01cd304c-6f43-4480-9479-618eb6fd578f
+  Client:
+    UsernameTemplate: "{{ username }}"
+  Security:
+    PAATokenSigningKey: thisisasessionkeyreplacethisjetzt
+    UserTokenEncryptionKey: thisisasessionkeyreplacethisjetzt
+    EnableUserToken: true
+    VerifyClientIp: true
+  Caps:
+    TokenAuth: true
+
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+envFrom:
+  configmaps: {}
+  secrets: {}
+
+
+volumeMountsPath:
+  configmaps: /etc/rdpgw
+  secrets: /etc/rdgw/secrets
+
+volumeMounts:
+  configmaps: {}
+  secrets: {}
+
+existingSecrets: [] 
+
+# We usually recommend not to specify default resources and to leave this as a conscious
+# choice for the user. This also increases chances charts run on environments with little
+# resources, such as Minikube. If you do want to specify resources, uncomment the following
+# lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# startupProbe:
+#   failureThreshold: 5
+#   httpGet:
+#     path: /healthcheck
+#     port: 80
+#     scheme: HTTP
+#   initialDelaySeconds: 30
+#   periodSeconds: 3
+#   successThreshold: 1
+#   timeoutSeconds: 1
+    
+securityContext:
+  allowPrivilegeEscalation: false
+
+test:
+  enabled: false
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

@@ -1,0 +1,126 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "helmproj.fullname" . }}
+  labels:
+    app: {{ template "helmproj.name" . }}
+    chart: {{ template "helmproj.chart" . }}
+    draft: {{ .Values.draft | default "draft-app" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ template "helmproj.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        app: {{ template "helmproj.name" . }}
+        draft: {{ .Values.draft | default "draft-app" }}
+        release: {{ .Release.Name }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "helmproj.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- with .Values.ports }}
+          ports:
+            {{- range $index, $item := . }}
+            - name: {{ $item.name }}
+              containerPort: {{ $item.containerPort }}
+              protocol: {{ $item.protocol | default "TCP" }}
+            {{- end }}
+          {{- end }}
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          {{- if .Values.volumeMounts }}
+          volumeMounts:
+            - name: rdpgw-config-vol
+              mountPath: /opt/rdpgw/rdpgw.yaml
+              subPath: rdpgw.yaml
+            {{- range $key, $val := .Values.volumeMounts.configmaps }}
+            - name: {{ $key }}
+              mountPath: {{ $.Values.volumeMountsPath.configmaps }}/{{ $key }}
+              subPath: {{ $key }}
+              readOnly: true
+            {{- end }}
+            {{- range $key, $val := .Values.volumeMounts.secrets }}
+            - name: {{ $key }}
+              mountPath: {{ $.Values.volumeMountsPath.secrets }}/{{ $key }}
+              subPath: {{ $key }}
+              readOnly: true
+            {{- end }}
+          {{- end }}
+          {{- if .Values.envFrom }}
+          {{- if or .Values.envFrom.configmaps .Values.envFrom.secrets }}
+          envFrom:
+            {{- if .Values.envFrom.configmaps }}
+            - configMapRef:
+                name: {{ template "helmproj.fullname" . }}
+            {{- end }}
+            {{- if .Values.envFrom.secrets }}
+            - secretRef:
+                name: {{ template "helmproj.fullname" . }}
+            {{- end }}
+          {{- end }}
+          {{- end }}
+          {{- with .Values.env }}
+          env:
+            {{- range $k, $v := . }}
+            - name: {{ $k | quote}}
+              value: {{ $v | quote }}
+            {{- end }}
+          {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: rdpgw-config-vol
+          configMap:
+            name: {{ template "helmproj.fullname" . }}-config
+            items:
+            - key: rdpgw.yaml
+              path: rdpgw.yaml
+        {{- range $key, $val := .Values.volumeMounts.configmaps }}
+        - name: {{ $key }}
+          configMap:
+            name: {{ template "helmproj.fullname" . }}-vols
+        {{- end }}
+        {{- range $key, $val := .Values.volumeMounts.secrets }}
+        - name: {{ $key }}
+          secret:
+            secretName: {{ template "helmproj.fullname" . }}-vols
+        {{- end }}
+
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

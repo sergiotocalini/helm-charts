@@ -1,0 +1,19 @@
+apiVersion: v2
+name: rdpgw
+version: "1.0.0"
+appVersion: "2.0.2"
+home: https://github.com/bolkedebruin/rdpgw
+description: |
+  Remote Desktop Gateway in Go for deploying on Linux/BSD/Kubernetes
+icon: https://www.zdv.uni-mainz.de/files/Microsoft-Remote-Desktop-10-AppIcon-4.png
+sources:
+  - https://github.com/bolkedebruin/rdpgw
+type: application
+maintainers:
+  - name: "Sergio Tocalini"
+    email: sergiotocalini@gmail.com
+    url: https://sergiotocalini.github.io
+annotations:
+  artifacthub.io/links: |
+    - name: Helm chart source
+      url: https://github.com/sergiotocalini/helm-charts/tree/master/charts/rdpgw
