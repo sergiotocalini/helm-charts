@@ -63,7 +63,7 @@ spec:
           {{- end }}
           {{- end }}
           {{- if .Values.envFrom }}
-          {{- if or .Values.envFrom.configmaps .Values.envFrom.secrets }}
+          {{- if or .Values.envFrom.configmaps .Values.envFrom.secrets .Values.existingSecrets }}
           envFrom:
             {{- if .Values.envFrom.configmaps }}
             - configMapRef:
@@ -72,6 +72,10 @@ spec:
             {{- if .Values.envFrom.secrets }}
             - secretRef:
                 name: {{ template "helmproj.fullname" . }}
+            {{- end }}
+            {{- range .Values.existingSecrets }}
+            - secretRef:
+                name: {{ . }}
             {{- end }}
           {{- end }}
           {{- end }}
@@ -84,7 +88,7 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      {{- if or .Values.volumeMounts.configmaps .Values.volumeMounts.secrets }}
+      {{- if and .Values.volumeMounts (or .Values.volumeMounts.configmaps .Values.volumeMounts.secrets) }}
       volumes:
         {{- if .Values.volumeMounts.configmaps }}
         - name: configs
